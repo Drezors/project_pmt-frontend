@@ -1,0 +1,70 @@
+:host {
+  display: block;
+  padding: 2rem 0;
+  background-color: #f3f2f7;
+  font-family: 'Inter', sans-serif;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, #6a0dad, #4b0082);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.d-flex.justify-content-between {
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.nav-tabs {
+  border-bottom: none;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  border-radius: 0.5rem 0.5rem 0 0;
+  overflow: hidden;
+
+  .nav-link {
+    color: #343a40;
+    font-weight: 500;
+    transition: background 0.2s;
+
+    &.active {
+      background-color: #6a0dad;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 0.5rem 0.5rem 0 0;
+    }
+
+    &:hover {
+      background-color: rgba(106, 13, 173, 0.1);
+    }
+  }
+}
+
+router-outlet {
+  display: block;
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Bouton du modal */
+app-project-adder-modal {
+  button {
+    background-color: #6a0dad;
+    color: #fff;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: #4b0082;
+      transform: translateY(-2px);
+    }
+  }
+}

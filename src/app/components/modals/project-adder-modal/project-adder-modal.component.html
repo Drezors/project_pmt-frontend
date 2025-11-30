@@ -1,0 +1,41 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">New project</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="name" class="form-label">Nom du projet</label>
+        <input type="text" formControlName="name" class="form-control" id="name" placeholder="name"
+          autocomplete="off" />
+        <div class="invalid-feedback" *ngIf="name.touched && name.invalid">
+          Veuillez saisir le nom
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description du projet</label>
+        <input type="text" formControlName="description" class="form-control" id="description" placeholder="description"
+          autocomplete="off" />
+        <div class="invalid-feedback" *ngIf="name.touched && name.invalid">
+          Veuillez saisir le nom
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button class="btn btn-primary" type="submit">Créer</button>
+        <div *ngIf="errorForm" class="alert alert-danger mt-5">
+          {{ errorForm }}
+        </div>
+        <div *ngIf="succesForm" class="alert alert-success mt-5">
+          Création réussie !
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<button class="btn btn-primary" (click)="open(content)">
+  Nouveau projet
+</button>

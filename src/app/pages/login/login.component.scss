@@ -1,0 +1,95 @@
+input.ng-touched.ng-invalid {
+  border: 1px solid red;
+}
+
+.invalid-feedback {
+  display: block;
+}
+
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #6a0dad, #4b0082);
+  font-family: 'Inter', sans-serif;
+}
+
+.container {
+  background-color: #fff;
+  padding: 3rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+
+  h1 {
+    font-weight: 700;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #6a0dad;
+  }
+
+  .form-label {
+    font-weight: 600;
+    color: #333;
+  }
+
+  .form-control {
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ced4da;
+    transition: border 0.2s, box-shadow 0.2s;
+
+    &:focus {
+      border-color: #6a0dad;
+      box-shadow: 0 0 0 0.2rem rgba(106, 13, 173, 0.25);
+    }
+
+    &.ng-invalid.ng-touched {
+      border-color: #dc3545;
+    }
+  }
+
+  .invalid-feedback {
+    display: block;
+    font-size: 0.875rem;
+    color: #dc3545;
+    margin-top: 0.25rem;
+  }
+
+  .text-center {
+    margin-top: 1.5rem;
+    p {
+      font-size: 0.9rem;
+      a {
+        font-weight: 600;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    button {
+      width: 100%;
+      padding: 0.75rem;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      transition: background 0.2s, transform 0.2s;
+
+      &:hover {
+        background-color: #4b0082;
+        transform: translateY(-2px);
+      }
+    }
+
+    .alert {
+      font-size: 0.9rem;
+      margin-top: 1.5rem;
+      border-radius: 0.5rem;
+    }
+  }
+}

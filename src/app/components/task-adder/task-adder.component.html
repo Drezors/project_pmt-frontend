@@ -1,0 +1,40 @@
+<div class="mb-3">
+  <button class="btn btn-primary" (click)="toggleForm()">
+    {{ isAdding ? "Annuler" : "Ajouter une tâche" }}
+  </button>
+</div>
+
+<div *ngIf="isAdding" class="card p-3 mb-4 mt-2 form-container">
+  <h2>Nouvelle tâche</h2>
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <div class="mb-2">
+      <label>Nom</label>
+      <input type="text" class="form-control" formControlName="name" />
+    </div>
+
+    <div class="mb-2">
+      <label>Description</label>
+      <textarea class="form-control" formControlName="description"></textarea>
+    </div>
+
+    <div class="mb-2">
+      <label>Priorité</label>
+      <select class="form-select" formControlName="priority">
+        <option value="LOW">FAIBLE</option>
+        <option value="MEDIUM">MOYENNE</option>
+        <option value="HIGH">HAUTE</option>
+      </select>
+    </div>
+
+    <div class="mb-2">
+      <label>Assigner à</label>
+      <select class="form-select" formControlName="assignedProjectMemberId">
+        <option *ngFor="let member of members" [value]="member.id">
+          {{ member.user.username }}
+        </option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Créer</button>
+  </form>
+</div>

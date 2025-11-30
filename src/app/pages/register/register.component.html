@@ -1,0 +1,74 @@
+<div class="container mt-5">
+  <h1 class="mb-3">Registration</h1>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="inputEmail" class="form-label">Email</label>
+      <input
+        type="email"
+        formControlName="email"
+        class="form-control"
+        id="inputEmail"
+        placeholder="name@example.fr"
+      />
+      <div
+        class="invalid-feedback"
+        *ngIf="email.touched && email.invalid && email.errors"
+      >
+        <ng-container *ngIf="email.errors['required']">
+          L'email ne peut pas être vide
+        </ng-container>
+        <ng-container *ngIf="email.errors['email']">
+          L'email est invalide
+        </ng-container>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input
+        type="text"
+        formControlName="username"
+        class="form-control"
+        id="username"
+        placeholder="Username"
+        autocomplete="off"
+      />
+      <div
+        class="invalid-feedback"
+        *ngIf="username.touched && username.invalid"
+      >
+        L'username est obligatoire
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="inputPassword" class="form-label">Mot de passe</label>
+      <input
+        type="password"
+        formControlName="password"
+        class="form-control"
+        id="inputPassword"
+        placeholder="mot de passe"
+      />
+      <div
+        class="invalid-feedback"
+        *ngIf="password.touched && password.invalid"
+      >
+        Le mot de passe ne peut pas être vide
+      </div>
+    </div>
+
+    <div class="text-center">
+      <p>
+        Vous avez déjà un compte ?
+        <a class="link-primary" href="/login">Identifiez-vous</a>
+      </p>
+      <button class="btn btn-primary" type="submit">Se connecter</button>
+      <div *ngIf="errorForm" class="alert alert-danger mt-5">
+        {{ errorForm }}
+      </div>
+      <div *ngIf="succesForm" class="alert alert-success mt-5">
+        Création du compte réussie !
+      </div>
+    </div>
+  </form>
+</div>

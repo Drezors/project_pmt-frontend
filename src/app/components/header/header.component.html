@@ -1,0 +1,10 @@
+<nav class="navbar header bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" (click)="redirectToMain()"> Tableau de bord </a>
+    <div>
+      <button class="btn btn-danger" (click)="logout()" *ngIf="authService.isLoggedIn">
+        Se déconnecter
+      </button>
+    </div>
+  </div>
+</nav>

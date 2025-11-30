@@ -1,0 +1,46 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Ajouter un membre</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="addMemberForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="userId" class="form-label">Sélectionner un utilisateur</label>
+        <select formControlName="userId" id="userId" class="form-select" required>
+          <option *ngFor="let user of availableUsers" [value]="user.id">
+            {{ user.username }}
+          </option>
+        </select>
+        <div *ngIf="userId?.invalid && userId?.touched" class="invalid-feedback">
+          Veuillez sélectionner un utilisateur valide
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="role" class="form-label">Rôle</label>
+        <select formControlName="role" id="role" class="form-select" required>
+          <option value="ADMIN">Admin</option>
+          <option value="MEMBER">Member</option>
+          <option value="VISITOR">Visitor</option>
+        </select>
+      </div>
+
+      <div class="text-center">
+        <button class="btn btn-primary" type="submit">Ajouter</button>
+      </div>
+
+      <p *ngIf="errorForm" class="alert alert-danger mt-3">
+        {{ errorForm }}
+      </p>
+    </form>
+
+    <!-- Error Message -->
+    <div *ngIf="errorForm" class="alert alert-danger mt-3">
+      {{ errorForm }}
+    </div>
+  </div>
+</ng-template>
+
+<button class="btn btn-primary" (click)="open(content)">Ajouter des membres</button>

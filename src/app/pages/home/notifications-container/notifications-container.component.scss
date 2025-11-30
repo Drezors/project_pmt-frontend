@@ -1,0 +1,107 @@
+
+:host {
+  display: block;
+  padding: 2rem;
+  background-color: #f3f2f7;
+  font-family: 'Inter', sans-serif;
+}
+
+.notifications-container {
+  max-width: 600px;
+  margin: 0 auto;
+
+  h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #6a0dad;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .notification {
+    background-color: #fff;
+    border-radius: 0.75rem;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: background 0.2s, transform 0.2s;
+
+    &.read {
+      opacity: 0.6;
+      background-color: #f8f9fa;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    p {
+      margin: 0 0 0.5rem 0;
+      color: #333;
+      font-size: 0.95rem;
+    }
+
+    .actions {
+      display: flex;
+      gap: 0.5rem;
+
+      button {
+        padding: 0.4rem 0.75rem;
+        border: none;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.2s;
+
+        &:first-child {
+          background-color: #6a0dad;
+          color: #fff;
+
+          &:hover {
+            background-color: #4b0082;
+            transform: translateY(-1px);
+          }
+        }
+
+        &:last-child {
+          background-color: #dc3545;
+          color: #fff;
+
+          &:hover {
+            background-color: #a71d2a;
+            transform: translateY(-1px);
+          }
+        }
+      }
+    }
+  }
+
+  .actions-global {
+    text-align: center;
+    margin-top: 1.5rem;
+
+    button {
+      background-color: #6a0dad;
+      color: #fff;
+      border: none;
+      padding: 0.6rem 1rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+
+      &:hover {
+        background-color: #4b0082;
+        transform: translateY(-1px);
+      }
+    }
+  }
+
+  p {
+    text-align: center;
+    color: #555;
+    font-size: 0.95rem;
+    margin-top: 2rem;
+  }
+}

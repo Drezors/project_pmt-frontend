@@ -1,0 +1,34 @@
+.container {
+  padding-top: 20px;
+}
+
+:host {
+  display: block;
+  padding: 2rem;
+  background-color: #f3f2f7;
+  font-family: 'Inter', sans-serif;
+}
+
+.row {
+  gap: 2rem; // espace entre les colonnes
+}
+
+.col-md-4 {
+  display: flex;
+  justify-content: center; // centre les cards horizontalement
+}
+
+app-project-card {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  }
+}

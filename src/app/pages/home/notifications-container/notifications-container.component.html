@@ -1,0 +1,24 @@
+<div class="notifications-container">
+  <h2>Notifications</h2>
+
+  <div
+    *ngFor="let notif of notifications"
+    class="notification"
+    [class.read]="notif.read"
+  >
+    <p>{{ notif.message }}</p>
+
+    <div class="actions">
+      <button *ngIf="!notif.read" (click)="markAsRead(notif.id)">
+        Marquer comme lue
+      </button>
+      <button (click)="delete(notif.id)">Supprimer</button>
+    </div>
+  </div>
+
+  <div class="actions-global" *ngIf="notifications.length > 0">
+    <button (click)="markAllAsRead()">Tout marquer comme lues</button>
+  </div>
+
+  <p *ngIf="notifications.length === 0">Aucune notification</p>
+</div>

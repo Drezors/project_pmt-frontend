@@ -1,0 +1,19 @@
+<app-header></app-header>
+
+<div class="container mt-5">
+  <div class="d-flex justify-content-between">
+    <h1 class="mb-3">
+      Bienvenue {{ this.currentUserConnected.username }} !
+    </h1>
+    <app-project-adder-modal></app-project-adder-modal>
+  </div>
+
+  <ul class="nav nav-tabs">
+    <li class="nav-item" *ngFor="let tab of tabs">
+      <a class="nav-link" [routerLink]="tab.path" routerLinkActive="active">{{
+        tab.name
+        }}</a>
+    </li>
+  </ul>
+  <router-outlet></router-outlet>
+</div>

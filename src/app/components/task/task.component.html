@@ -1,0 +1,53 @@
+<div class="card task-card">
+  <div class="card-body">
+    <div class="d-flex justify-content-between align-items-center">
+      <h5 class="task-name">{{ task.name }}</h5>
+      <button
+        *ngIf="user.role === 'ADMIN'"
+        class="btn btn-close"
+        (click)="onDelete()"
+      ></button>
+    </div>
+
+    <p class="task-desc">{{ task.description }}</p>
+
+    <div class="d-flex justify-content-between mt-2">
+      <span>
+        Statut :
+        <select
+          class="form-select "
+          *ngIf="canEditStatus()"
+          [(ngModel)]="task.status"
+          (ngModelChange)="onStatusChange($event)"
+        >
+          <option *ngFor="let s of statuses" [value]="s">{{ s }}</option>
+        </select>
+        <span *ngIf="!canEditStatus()">{{ task.status }}</span>
+      </span>
+
+      <span>
+        Priorité :
+        <select
+          class="form-select "
+          *ngIf="canEditPriority()"
+          [(ngModel)]="task.priority"
+          (ngModelChange)="onPriorityChange($event)"
+        >
+          <option *ngFor="let p of priorities" [value]="p">{{ p }}</option>
+        </select>
+        <span *ngIf="!canEditPriority()">{{ task.priority }}</span>
+      </span>
+    </div>
+
+    <div class="mt-2">
+      <small
+        >Assigné à :
+        <strong>{{ task.assignedUser?.username || "Aucun" }}</strong></small
+      ><br />
+      <small
+        >Créé par :
+        <strong>{{ task.createdBy?.username || "Inconnu" }}</strong></small
+      >
+    </div>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="container mt-5">
+  <h1 class="mb-3">Login</h1>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="inputEmail" class="form-label">Email</label>
+      <input
+        type="email"
+        formControlName="email"
+        class="form-control"
+        id="inputEmail"
+        placeholder="name@example.fr"
+      />
+      <div
+        class="invalid-feedback"
+        *ngIf="email.touched && email.invalid && email.errors"
+      >
+        <ng-container *ngIf="email.errors['required']">
+          Veuillez entrer l'email
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="inputPassword" class="form-label">Mot de passe</label>
+      <input
+        type="password"
+        formControlName="password"
+        class="form-control"
+        id="inputPassword"
+        placeholder="mot de passe"
+      />
+      <div
+        class="invalid-feedback"
+        *ngIf="password.touched && password.invalid"
+      >
+        Veuillez entrer l'email
+      </div>
+    </div>
+
+    <div class="text-center">
+      <p>
+        Vous n'avez pas de compte ?
+        <a class="link-primary" href="/register">Cliquez ici</a>
+      </p>
+      <button class="btn btn-primary" type="submit">Se connecter</button>
+      <div *ngIf="errorForm" class="alert alert-danger mt-5">
+        {{ errorForm }}
+      </div>
+      <div *ngIf="succesForm" class="alert alert-success mt-5">
+        Connection ...
+      </div>
+    </div>
+  </form>
+</div>
