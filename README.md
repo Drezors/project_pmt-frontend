@@ -1,4 +1,4 @@
-# Outil de Gestion de Projet - Frontend (Angular)
+# Outil de Gestion de Projet (PMT) - Frontend (Angular)
 
 ## Prérequis
 
