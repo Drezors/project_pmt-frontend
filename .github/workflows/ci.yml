@@ -11,32 +11,47 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Récupérer le code
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Installer Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
 
+      # Installer les dépendances
       - name: Install dependencies
         run: npm ci
 
+      # Installer Chrome Headless pour les tests
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@v1
+
+      # Exécuter les tests Angular avec coverage
+      - name: Run tests with coverage
+        run: npx ng test --watch=false --browsers=ChromeHeadless
+
+      # Archiver le rapport de couverture
       - name: Archive coverage report
         uses: actions/upload-artifact@v4
         with:
           name: frontend-coverage-report
           path: coverage
 
+      # Se connecter à Docker Hub
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
+      # Build Docker image
       - name: Build Docker image
         run: docker build -t project_pmt-frontend:latest .
 
+      # Tag et push l'image
       - name: Tag and push Docker image
         run: |
           docker tag project_pmt-frontend:latest ${{ secrets.DOCKER_HUB_USERNAME }}/project_pmt-frontend:latest

@@ -28,7 +28,7 @@ export class ProjectAdderModalComponent {
   constructor(
     private apiService: ApiService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
   ) {
     this.projectForm = new FormGroup({
       name: new FormControl('', Validators.required),
@@ -47,18 +47,20 @@ export class ProjectAdderModalComponent {
         },
         (reason) => {
           this.closeResult.set(`Dismissed ${this.getDismissReason(reason)}`);
-        }
+        },
       );
   }
 
   onSubmit() {
-    // if (this.projectForm.invalid) {
-    //   console.log('Formulaire invalide');
-    //   return;
-    // }
-    console.log(this.projectForm.value);
+    if (this.projectForm.invalid) {
+      console.log('Formulaire invalide');
+      this.errorForm = 'Formulaire invalide';
+      return;
+    }
+
     const userId = this.authService.userId;
     console.log('User ID:', userId);
+
     this.apiService.postProject(this.projectForm.value)?.subscribe({
       next: (response) => {
         this.errorForm = '';
