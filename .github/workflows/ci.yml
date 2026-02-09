@@ -23,7 +23,7 @@ jobs:
         run: npm ci
 
       - name: Run tests with coverage
-        run: ng test --code-coverage
+        run: npx ng test --code-coverage
 
       - name: Archive coverage report
         uses: actions/upload-artifact@v4
