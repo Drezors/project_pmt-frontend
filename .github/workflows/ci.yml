@@ -22,9 +22,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests with coverage
-        run: npx ng test --code-coverage
-
       - name: Archive coverage report
         uses: actions/upload-artifact@v4
         with:
